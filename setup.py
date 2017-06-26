@@ -1,6 +1,6 @@
 import os
 import sys
-
+import pip.download
 
 
 try:
@@ -15,7 +15,7 @@ except ImportError:
 
 from pip.req import parse_requirements
 
-install_reqs = parse_requirements('requirements.txt')
+install_reqs = parse_requirements('requirements.txt',session=pip.download.PipSession())
 install_requires = [str(ir.req) for ir in install_reqs]
 
 path, script = os.path.split(sys.argv[0])
